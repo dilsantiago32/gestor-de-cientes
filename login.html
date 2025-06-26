@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Gestor de Clientes</title>
+  <link rel="stylesheet" href="estilos/styles.css" />
+</head>
+<body>
+  <h2 id="form-title">Login</h2>
+
+  <div class="form-container">
+    <div id="error" class="error"></div>
+    <input type="email" id="email" placeholder="E-mail" required />
+    <input type="password" id="password" placeholder="Senha" required />
+    <button id="submitBtn">Entrar</button>
+    <div class="toggle" id="toggleForm">Não tem conta? Criar uma</div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCz87Gk4j9nf5em4PVBv0Mc7nDQHMSy3wI",
+      authDomain: "gestor-de-clientes-6b90a.firebaseapp.com",
+      projectId: "gestor-de-clientes-6b90a",
+      storageBucket: "gestor-de-clientes-6b90a.appspot.com",
+      messagingSenderId: "745007465511",
+      appId: "1:745007465511:web:c404ba6d2fb00aeb8e7a02"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const submitBtn = document.getElementById("submitBtn");
+    const toggleForm = document.getElementById("toggleForm");
+    const formTitle = document.getElementById("form-title");
+    const errorDiv = document.getElementById("error");
+
+    let isLogin = true;
+
+    toggleForm.addEventListener("click", () => {
+      isLogin = !isLogin;
+      formTitle.textContent = isLogin ? "Login" : "Criar Conta";
+      submitBtn.textContent = isLogin ? "Entrar" : "Cadastrar";
+      toggleForm.textContent = isLogin
+        ? "Não tem conta? Criar uma"
+        : "Já tem conta? Fazer login";
+      errorDiv.textContent = "";
+    });
+
+    submitBtn.addEventListener("click", async () => {
+      const emailVal = email.value.trim();
+      const passwordVal = password.value;
+
+      if (!emailVal || !passwordVal) {
+        errorDiv.textContent = "Preencha todos os campos.";
+        return;
+      }
+
+      try {
+        if (isLogin) {
+          await signInWithEmailAndPassword(auth, emailVal, passwordVal);
+        } else {
+          await createUserWithEmailAndPassword(auth, emailVal, passwordVal);
+        }
+
+        window.location.href = "index.html";
+      } catch (error) {
+        errorDiv.textContent = "Erro: " + error.message;
+      }
+    });
+  </script>
+</body>
+</html>

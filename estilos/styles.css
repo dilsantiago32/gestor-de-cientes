@@ -1,0 +1,277 @@
+@charset "utf-8";
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow-x: hidden;
+}
+
+.menu-btn {
+  background: none;
+  color: #333;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 1;
+}
+
+.menu-btn:hover {
+  color: #000;
+}
+
+.top-bar {
+  background: #222;
+  color: white;
+  padding: 10px;
+  text-align: right;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.top-bar button {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.top-bar button:hover {
+  background: #45a049;
+}
+
+#usuarioLogado span {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #ddd;
+}
+
+main {
+  background-color: #99999965;
+  padding: 20px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+footer {
+  background: #222;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+h1.titulo-central {
+  text-align: center;
+  margin: 20px 0 10px;
+  color: #333;
+  font-size: 28px;
+}
+
+/* Agrupamento horizontal e responsivo dos botões */
+.botoes-scroll-wrapper {
+  overflow-x: auto;
+  padding: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#botoesBanco {
+  display: inline-flex; /* importante: inline-flex evita quebra */
+  gap: 10px;
+  white-space: nowrap;
+}
+
+#botoesBanco button {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  background-color: #0066cc;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#botoesBanco button:hover {
+  background-color: #004999;
+}
+
+
+/* Botão da seção nova */
+section button {
+  margin-top: 20px;
+  background-color: #009688;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+section button:hover {
+  background-color: #00796b;
+}
+
+#formularioSecao {
+  margin-top: 20px;
+}
+
+.form-card {
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+}
+
+.form-card .info {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.form-card .info .nome,
+.form-card .info .valor,
+.form-card .info .data {
+  font-weight: bold;
+  padding: 5px;
+  background-color: #0066cc15;
+  color: black;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.form-card .acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  
+}
+
+.form-card button {
+  flex: 1;
+  background-color: #666;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.form-card button:hover {
+  background-color: #444;
+}
+
+.popup-opcoes {
+  position: absolute;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  z-index: 2000;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+}
+
+.popup-opcoes button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.popup-opcoes button:hover {
+  background-color: #f2f2f2;
+}
+
+/* Modal */
+.modal {
+  position: fixed; /* Mantém o modal fixo na tela */
+  z-index: 1000; /* Fica acima de outros elementos */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo escuro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Garante espaço interno mesmo em telas pequenas */
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 700px;
+  max-height: 100%; /* Garante que não ultrapasse a altura da tela */
+  overflow-y: auto; /* Rolagem interna se necessário */
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;  
+  padding: 8px;  
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+}
+
+.close:hover {
+  color: #333;
+}

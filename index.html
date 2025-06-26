@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestor de Cobranças</title>
+  <link rel="stylesheet" href="estilos/styles.css" />
+  <script type="module" src="app.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="top-bar" id="topBar">
+        <button id="btnEntrar">Entrar</button>
+        <button id="btnCriarConta">Criar Conta</button>
+        <div id="usuarioLogado" style="display: none;">
+          <span id="nomeUsuario"></span>
+          <button id="btnLogout">Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <h1 class="titulo-central">Gestor de Clientes</h1>
+
+    <main>
+      <div class="botoes-scroll-wrapper">
+        <section id="botoesBanco">
+          <button id="btnMeuBanco">Meu Banco</button>
+          <button id="btnAcessarExterno">➕ Acessar dados externos</button>
+          <button id="btnMaisProximos">🔍 Data mais próxima</button>
+        </section>
+      </div>
+
+      <section id="secaoNovoFormulario">
+        <button id="btnNovoFormulario">➕ Novo formulário</button>
+      </section>
+
+      <section id="formularioSecao">
+        <p>⚠️ Para usar todos os recursos, entre ou crie uma conta. Dados são salvos na nuvem apenas para usuários autenticados.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>⚠️ Para usar todos os recursos, entre ou crie uma conta. Dados são salvos na nuvem apenas para usuários autenticados.</p>
+    </footer>
+  </div>
+
+  <!-- Modais e Popup (fora da .container!) -->
+  <div id="modalFormulario" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" id="fecharFormulario">&times;</span>
+      <h2>Formulário</h2>
+      <input type="text" id="formNome" placeholder="Nome (Identificador Interno)" />
+      <input type="text" id="formNomeCliente" placeholder="Nome Completo do Cliente" />
+      <input type="date" id="formData" />
+      <input type="number" id="formValor" placeholder="Valor da cobrança" step="0.01" />
+      <input type="text" id="formTelefone" placeholder="Telefone" />
+      <input type="text" id="formWhatsapp" placeholder="WhatsApp" />
+      <input type="text" id="formInstagram" placeholder="Instagram" />
+      <textarea id="formObservacoes" placeholder="Observações"></textarea>
+      <button id="btnSalvar">Salvar</button>
+    </div>
+  </div>
+
+  <div id="modalLogin" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" id="fecharLogin">&times;</span>
+      <h2>Entrar</h2>
+      <input type="email" id="loginEmail" placeholder="Email" />
+      <input type="password" id="loginSenha" placeholder="Senha" />
+      <button id="btnLogin">Entrar</button>
+    </div>
+  </div>
+
+  <div id="modalCadastro" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" id="fecharCadastro">&times;</span>
+      <h2>Criar Conta</h2>
+      <input type="email" id="cadastroEmail" placeholder="Email" />
+      <input type="password" id="cadastroSenha" placeholder="Senha" />
+      <button id="btnCriar">Criar Conta</button>
+    </div>
+  </div>
+
+  <div id="popupOpcoes" class="popup-opcoes" style="display: none; position: absolute;">
+    <button onclick="editarFormulario()">✏️ Editar</button>
+    <button onclick="excluirFormulario()">🗑️ Excluir</button>
+  </div>
+</body>
+</html>
